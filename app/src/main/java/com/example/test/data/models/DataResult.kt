@@ -1,21 +1,25 @@
-package com.example.test
+package com.example.test.data.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class DataResult(
     val artistId: Int,
     val artistName: String,
     val artistViewUrl: String,
-    val artworkUrl100: String,
+    val artworkUrl100: String?,
     val artworkUrl30: String,
     val artworkUrl60: String,
     val collectionArtistId: Int,
-    val collectionArtistName: String,
+    val collectionArtistName: String?,
     val collectionArtistViewUrl: String,
     val collectionCensoredName: String,
     val collectionExplicitness: String,
     val collectionHdPrice: Double,
     val collectionId: Int,
     val collectionName: String,
-    val collectionPrice: Double,
+    val collectionPrice: Double?,
     val collectionViewUrl: String,
     val contentAdvisoryRating: String,
     val country: String,
@@ -27,8 +31,9 @@ data class DataResult(
     val kind: String,
     val longDescription: String,
     val previewUrl: String,
+    val price: Double?,
     val primaryGenreName: String,
-    val releaseDate: String,
+    val releaseDate: String?,
     val shortDescription: String,
     val trackCensoredName: String,
     val trackCount: Int,
@@ -43,4 +48,4 @@ data class DataResult(
     val trackTimeMillis: Int,
     val trackViewUrl: String,
     val wrapperType: String
-)
+) : Parcelable

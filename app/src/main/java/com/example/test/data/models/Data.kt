@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.test.data.models
 
 data class Data(
     val resultCount: Int,

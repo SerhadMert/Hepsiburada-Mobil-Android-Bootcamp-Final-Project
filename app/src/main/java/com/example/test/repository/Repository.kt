@@ -1,8 +1,7 @@
 package com.example.test.repository
 
-import com.example.test.Data
-import com.example.test.DataResult
-import com.example.test.api.RetrofitInstance
+import com.example.test.data.models.Data
+import com.example.test.data.api.RetrofitInstance
 import retrofit2.Response
 
 class Repository {

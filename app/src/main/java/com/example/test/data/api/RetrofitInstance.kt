@@ -1,4 +1,4 @@
-package com.example.test.api
+package com.example.test.data.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,5 +16,4 @@ object RetrofitInstance {
     val api: ItunesService by lazy {
         retrofit.create(ItunesService::class.java)
     }
-
 }
