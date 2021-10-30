@@ -2,6 +2,7 @@ package com.example.test.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.test.ItunesApplication
 import com.example.test.data.local.RoomDB
@@ -23,6 +24,7 @@ class DetailViewModel(private val repository: Repository) : ViewModel() {
             repository.deleteFavorite(favorites)
         }
     }
+    val readData = repository.readData()
 }
 class DetailViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.test.ItunesApplication
 import com.example.test.base.BaseFragment
+import com.example.test.data.models.Favorites
 import com.example.test.databinding.FragmentFavoritesBinding
 import com.example.test.ui.adapters.FavoritesAdapter
 import com.example.test.ui.viewmodels.FavoritesViewModel
@@ -27,14 +28,7 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(FragmentFavorit
     }
 
     private fun initFavorites() {
-        viewModel.readData.observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) {
-                adapter.setData(it)
-            } else {
-                Toast.makeText(context, "Favori bulunamadı", Toast.LENGTH_SHORT).show()
-            }
-        }
-
+        adapter.setData(viewModel.readData)
     }
     private fun initRV() {
         binding.recyclerFavorites.adapter = adapter

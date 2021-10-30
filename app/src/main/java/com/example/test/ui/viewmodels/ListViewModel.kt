@@ -13,11 +13,17 @@ class ListViewModel(private val repository: Repository) : ViewModel()  {
 
     var myResponse: MutableLiveData<Response<Data>> = MutableLiveData()
     val media: MutableLiveData<String> = MutableLiveData("movie")
-    private val limit = 20
+    var limit : MutableLiveData<Int> = MutableLiveData(20)
 
+
+    fun limitChanger(){
+        viewModelScope.launch {
+                limit.value = limit.value!!.plus(20)
+        }
+    }
     fun getData(term: String) {
         viewModelScope.launch {
-            val response = repository.getCustomPosts(term, media.value.toString(), limit)
+            val response = repository.getCustomPosts(term, media.value.toString(), limit.value!!)
             myResponse.value = response
         }
     }

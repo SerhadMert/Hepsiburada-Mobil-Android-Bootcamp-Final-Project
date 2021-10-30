@@ -9,16 +9,16 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "favorites")
 @Parcelize
 data class Favorites(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id") val id: Int = 0,
-    @ColumnInfo(name = "artworkUrl100") val artworkUrl100: String?,
-    @ColumnInfo(name = "trackName") val trackName: String?,
-    @ColumnInfo(name = "kind") val kind: String?,
-    @ColumnInfo(name = "trackPrice") val trackPrice: Double?,
-    @ColumnInfo(name = "price") val price: Double?,
-    @ColumnInfo(name = "currency") val currency: String?,
-    @ColumnInfo(name = "releaseDate") val releaseDate : String?,
-    @ColumnInfo(name = "description") val description: String?,
-    @ColumnInfo(name = "longDescription") val longDescription: String?,
-    @ColumnInfo(name = "shortDescription") val shortDescription: String?,
+    @PrimaryKey
+    @ColumnInfo(name = "trackId") val trackId : Int?,
+    @ColumnInfo(name = "artworkUrl100") val artworkUrl100: String? = null,
+    @ColumnInfo(name = "trackName") val trackName: String?= null,
+    @ColumnInfo(name = "kind") val kind: String?= null,
+    @ColumnInfo(name = "trackPrice") val trackPrice: Double?= null,
+    @ColumnInfo(name = "price") val price: Double?= null,
+    @ColumnInfo(name = "currency") val currency: String?= null,
+    @ColumnInfo(name = "releaseDate") val releaseDate : String?= null,
+    @ColumnInfo(name = "description") val description: String?= null,
+    @ColumnInfo(name = "longDescription") val longDescription: String?= null,
+    @ColumnInfo(name = "shortDescription") val shortDescription: String?= null
 ) : Parcelable

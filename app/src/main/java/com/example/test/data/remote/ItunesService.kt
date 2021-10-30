@@ -13,9 +13,4 @@ interface ItunesService {
         @Query("media") media:String,
         @Query("limit") limit:Int
     ):Response<Data>
-
-    @GET("lookup?")
-    suspend fun lookUpData(
-        @Query("id") id : Int,
-    ):Response<Data>
 }

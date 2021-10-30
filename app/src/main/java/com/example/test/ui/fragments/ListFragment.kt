@@ -1,16 +1,17 @@
 package com.example.test.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.test.ItunesApplication
-import com.example.test.ui.viewmodels.ListViewModel
-import com.example.test.ui.adapters.MyAdapter
 import com.example.test.base.BaseFragment
 import com.example.test.databinding.FragmentListBinding
+import com.example.test.ui.adapters.MyAdapter
+import com.example.test.ui.viewmodels.ListViewModel
 import com.example.test.ui.viewmodels.ListViewModelFactory
 
 class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::inflate,true){
@@ -26,6 +27,7 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
         initRV()
         search()
         initChips()
+        onScrollListener()
     }
 
     private fun getDatas(){
@@ -47,6 +49,8 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
                 when(newText!!.length > 2) {
                     true -> {
                         text=newText
+                        myAdapter.setData(emptyList())
+                        binding.recyclerHome.scrollToPosition(0)
                         viewModel.getData(text)
                         getDatas()
                     }
@@ -60,22 +64,34 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
         binding.apply {
 
             chipMovies.setOnClickListener {
-                viewModel.media.value="movie"
+                viewModel.media.value = "movie"
+                viewModel.limit.value = 20
+                myAdapter.setData(emptyList())
+                binding.recyclerHome.scrollToPosition(0)
                 viewModel.getData(text)
                 getDatas()
             }
             chipMusics.setOnClickListener {
-                viewModel.media.value="music"
+                viewModel.media.value = "music"
+                viewModel.limit.value = 20
+                myAdapter.setData(emptyList())
+                recyclerHome.scrollToPosition(0)
                 viewModel.getData(text)
                 getDatas()
             }
             chipBooks.setOnClickListener {
                 viewModel.media.value="ebook"
+                viewModel.limit.value = 20
+                myAdapter.setData(emptyList())
+                binding.recyclerHome.scrollToPosition(0)
                 viewModel.getData(text)
                 getDatas()
             }
             chipApps.setOnClickListener {
-                viewModel.media.value="software"
+                viewModel.media.value = "software"
+                viewModel.limit.value = 20
+                myAdapter.setData(emptyList())
+                binding.recyclerHome.scrollToPosition(0)
                 viewModel.getData(text)
                 getDatas()
             }
@@ -84,5 +100,23 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
 
     private fun initRV(){
         binding.recyclerHome.adapter=myAdapter
+    }
+
+    private fun onScrollListener() {
+        binding.recyclerHome.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!binding.recyclerHome.canScrollVertically(1) &&
+                    newState == RecyclerView.SCROLL_STATE_IDLE
+                ) {
+                    if (viewModel.limit.value!! < 200) {
+                        viewModel.limitChanger()
+                        Log.d("LogLimit",viewModel.limit.value.toString())
+                    }
+                    viewModel.getData(text)
+                    getDatas()
+                }
+            }
+        })
     }
 }

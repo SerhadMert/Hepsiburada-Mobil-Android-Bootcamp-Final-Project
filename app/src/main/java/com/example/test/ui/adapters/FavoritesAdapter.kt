@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.test.data.models.DataResult
 import com.example.test.data.models.Favorites
 import com.example.test.databinding.ItemFavoritesBinding
+import com.example.test.ui.fragments.FavoritesFragmentDirections
 import com.example.test.ui.fragments.ListFragmentDirections
 
 class FavoritesAdapter:RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
@@ -30,10 +31,26 @@ class FavoritesAdapter:RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder
                     textCurrency.text = favorite.currency
                     textReleaseDate.text = favorite.releaseDate?.substring(0,10)
                     crdItem.setOnClickListener {
+                        val action =
+                            FavoritesFragmentDirections.actionFavoritesFragmentToDetailFragment(
+                                DataResult(
+                                    trackId = favorite.trackId,
+                                    artworkUrl100 = favorite.artworkUrl100,
+                                    trackName = favorite.trackName,
+                                    kind = favorite.kind,
+                                    trackPrice = favorite.trackPrice,
+                                    price = favorite.price,
+                                    currency = favorite.currency,
+                                    releaseDate = favorite.releaseDate,
+                                    description = favorite.description,
+                                    longDescription = favorite.longDescription,
+                                    shortDescription = favorite.shortDescription
+                                )
+                            )
+                        it.findNavController().navigate(action)
                     }
                 }
             }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesViewHolder {

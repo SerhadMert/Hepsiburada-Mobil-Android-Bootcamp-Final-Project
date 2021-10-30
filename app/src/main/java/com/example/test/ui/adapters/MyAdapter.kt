@@ -36,18 +36,6 @@ class MyAdapter :RecyclerView.Adapter<MyAdapter.HomeClassHolder>(){
                 }
             }
         }
-        /*companion object{
-            val diffCallback = object : DiffUtil.ItemCallback<Result>(){
-                override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
-                    return oldItem.trackId == newItem.trackId
-                }
-
-                override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
-                    return oldItem == newItem
-                }
-            }
-        }*/
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeClassHolder {

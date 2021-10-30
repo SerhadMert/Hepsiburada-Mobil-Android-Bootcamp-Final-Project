@@ -10,7 +10,13 @@ import kotlinx.coroutines.launch
 
 class FavoritesViewModel(private val repository: Repository) : ViewModel() {
 
-    val readData = repository.readData().asLiveData()
+    val readData = repository.readData()
+
+    fun deleteFavorite(favorites: Favorites){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFavorite(favorites)
+        }
+    }
 }
 class FavoritesViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

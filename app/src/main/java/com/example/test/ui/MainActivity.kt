@@ -22,9 +22,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        binding.bottomNavigation.setupWithNavController(
-            navController
-        )
+        binding.bottomNavigation.setupWithNavController(navController)
 
     }
     fun showNavigationBar() {

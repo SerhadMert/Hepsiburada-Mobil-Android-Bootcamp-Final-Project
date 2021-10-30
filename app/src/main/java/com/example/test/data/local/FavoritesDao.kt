@@ -5,13 +5,12 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.test.data.models.Favorites
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoritesDao {
 
-    @Query("SELECT * FROM favorites ORDER BY id DESC")
-    fun getFavorites(): Flow<List<Favorites>>
+    @Query("SELECT * FROM favorites")
+    fun getFavorites(): List<Favorites>
 
     @Insert
     suspend fun addFavorites(favorites: Favorites)
