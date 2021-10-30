@@ -1,4 +1,4 @@
-package com.example.test.ui
+package com.example.test.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -35,8 +35,6 @@ class MyAdapter :RecyclerView.Adapter<MyAdapter.HomeClassHolder>(){
                     it.findNavController().navigate(action)
                 }
             }
-
-
         }
         /*companion object{
             val diffCallback = object : DiffUtil.ItemCallback<Result>(){

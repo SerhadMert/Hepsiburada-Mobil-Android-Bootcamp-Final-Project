@@ -5,15 +5,20 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.example.test.ItunesApplication
 import com.example.test.ui.viewmodels.ListViewModel
-import com.example.test.ui.MyAdapter
+import com.example.test.ui.adapters.MyAdapter
 import com.example.test.base.BaseFragment
 import com.example.test.databinding.FragmentListBinding
+import com.example.test.ui.viewmodels.ListViewModelFactory
 
-class ListFragment:BaseFragment<FragmentListBinding>(FragmentListBinding::inflate){
+class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::inflate,true){
 
     private val myAdapter by lazy { MyAdapter() }
-    private val viewModel by viewModels<ListViewModel>()
+    private val viewModel : ListViewModel by viewModels {
+        ListViewModelFactory((context?.applicationContext as ItunesApplication).repository)
+    }
     private var text =""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

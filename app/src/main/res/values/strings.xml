@@ -9,4 +9,6 @@
     <string name="music">Music</string>
     <string name="apps">Apps</string>
     <string name="books">Books</string>
+    <string name="search">Search</string>
+    <string name="favorites">Favorites</string>
 </resources>

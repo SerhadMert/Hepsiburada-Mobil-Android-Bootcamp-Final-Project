@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidApps/Test/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.37962962962962965" />
+        <entry key="..\:/AndroidApps/Test/app/src/main/res/drawable/ic_heart_empty.xml" value="0.37962962962962965" />
+        <entry key="..\:/AndroidApps/Test/app/src/main/res/drawable/ic_heart_filled.xml" value="0.37962962962962965" />
+        <entry key="..\:/AndroidApps/Test/app/src/main/res/drawable/selector_nav_item.xml" value="0.37962962962962965" />
         <entry key="..\:/AndroidApps/Test/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/AndroidApps/Test/app/src/main/res/layout/fragment_detail.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidApps/Test/app/src/main/res/layout/fragment_favorites.xml" value="0.28306159420289856" />
         <entry key="..\:/AndroidApps/Test/app/src/main/res/layout/fragment_fragment.xml" value="0.2957427536231884" />
         <entry key="..\:/AndroidApps/Test/app/src/main/res/layout/fragment_list.xml" value="0.18085106382978725" />
         <entry key="..\:/AndroidApps/Test/app/src/main/res/layout/item_data.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidApps/Test/app/src/main/res/layout/item_favorites.xml" value="0.28306159420289856" />
+        <entry key="..\:/AndroidApps/Test/app/src/main/res/menu/bottom_nav_menu.xml" value="0.371875" />
       </map>
     </option>
   </component>

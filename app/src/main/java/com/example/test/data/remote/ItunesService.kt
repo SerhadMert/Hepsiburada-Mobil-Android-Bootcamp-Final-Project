@@ -1,4 +1,4 @@
-package com.example.test.data.api
+package com.example.test.data.remote
 
 import com.example.test.data.models.Data
 import retrofit2.Response
@@ -12,5 +12,10 @@ interface ItunesService {
         @Query("term") term:String,
         @Query("media") media:String,
         @Query("limit") limit:Int
+    ):Response<Data>
+
+    @GET("lookup?")
+    suspend fun lookUpData(
+        @Query("id") id : Int,
     ):Response<Data>
 }

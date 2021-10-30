@@ -22,4 +22,9 @@
             android:name="currentItem"
             app:argType="com.example.test.data.models.DataResult" />
     </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.test.ui.fragments.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
 </navigation>
