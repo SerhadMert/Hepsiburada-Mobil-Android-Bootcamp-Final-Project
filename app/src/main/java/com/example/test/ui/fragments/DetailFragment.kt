@@ -1,15 +1,15 @@
 package com.example.test.ui.fragments
 
 import android.os.Bundle
+import android.text.Html
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.test.ItunesApplication
+import com.example.test.R
 import com.example.test.base.BaseFragment
 import com.example.test.data.models.Favorites
 import com.example.test.databinding.FragmentDetailBinding
@@ -23,9 +23,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
     private val viewModel : DetailViewModel by viewModels {
         DetailViewModelFactory((context?.applicationContext as ItunesApplication).repository)
     }
+    private val img by lazy { args.currentItem.artworkUrl100?.replace("100x100bb.jpg","200x200bb.jpg") }
     private val favorite by lazy { Favorites(
         args.currentItem.trackId,
-        args.currentItem.artworkUrl100,
+        img,
         args.currentItem.trackName,
         args.currentItem.kind,
         args.currentItem.trackPrice,
@@ -45,7 +46,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
 
     private fun isInFavorite(): Boolean {
         var isInFavorite = false
-
             for( data in viewModel.readData){
             isInFavorite = data.trackId == args.currentItem.trackId
             if(isInFavorite) break
@@ -55,24 +55,35 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
     private fun updateFavoriteButtons() {
         binding.apply {
             if (isInFavorite()) {
-                imgLikeAdd.visibility = INVISIBLE
-                imgLikeDelete.visibility = VISIBLE
+                imgLikeAdd.setImageResource(R.drawable.ic_heart_filled)
             } else {
-                imgLikeDelete.visibility = INVISIBLE
-                imgLikeAdd.visibility = VISIBLE
+                imgLikeAdd.setImageResource(R.drawable.ic_heart_empty)
             }
         }
-
     }
 
-    private fun initBinding(){
+    private fun initBinding() {
         binding.apply {
-            Glide.with(imgArt100.context).load(args.currentItem.artworkUrl100).into(imgArt100)
+            Glide.with(imgArt100.context).load(img).into(imgArt100)
             txtName.text = args.currentItem.trackName
             txtCurrency.text = args.currentItem.currency
-            when(args.currentItem.kind){
-                "feature-movie","music" -> txtPrice.text = args.currentItem.trackPrice.toString()
-                "software","ebook" -> txtPrice.text = args.currentItem.price.toString()
+            when (args.currentItem.kind) {
+                "feature-movie" -> {
+                    txtPrice.text = args.currentItem.trackPrice.toString()
+                    if(args.currentItem.longDescription!=null){
+                    txtDescription.text = Html.fromHtml(args.currentItem.longDescription)
+                    } else{
+                        txtDescription.text = Html.fromHtml(args.currentItem.shortDescription)
+                    }
+                }
+                "software", "ebook" -> {
+                    txtPrice.text = args.currentItem.price.toString()
+                    txtDescription.text = Html.fromHtml(args.currentItem.description)
+                }
+                "music" ->{
+                    txtPrice.text = args.currentItem.trackPrice.toString()
+                    txtDescription.text = getString(R.string.no_description)
+                }
             }
             imgBack.setOnClickListener {
                 findNavController().popBackStack()
@@ -81,23 +92,22 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
         updateFavoriteButtons()
     }
 
-    private fun initFavoriteClickListener(){
+    private fun initFavoriteClickListener() {
         binding.apply {
             imgLikeAdd.setOnClickListener {
-                viewModel.addFavorite(favorite)
-                imgLikeAdd.visibility = INVISIBLE
-                imgLikeDelete.visibility = VISIBLE
-                Toast.makeText(
-                    context, "Successfully added to favorites", Toast.LENGTH_LONG
-                ).show()
-            }
-            imgLikeDelete.setOnClickListener {
-                viewModel.deleteFavorite(favorite)
-                imgLikeDelete.visibility = INVISIBLE
-                imgLikeAdd.visibility = VISIBLE
-                Toast.makeText(
-                    context, "Successfully deleted from favorites", Toast.LENGTH_LONG
-                ).show()
+                if (!isInFavorite()) {
+                    viewModel.addFavorite(favorite)
+                    imgLikeAdd.setImageResource(R.drawable.ic_heart_filled)
+                    Toast.makeText(
+                        context, "Successfully added to favorites", Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    viewModel.deleteFavorite(favorite)
+                    imgLikeAdd.setImageResource(R.drawable.ic_heart_empty)
+                    Toast.makeText(
+                        context, "Successfully deleted from favorites", Toast.LENGTH_LONG
+                    ).show()
+                }
             }
         }
     }

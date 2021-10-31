@@ -5,12 +5,23 @@
     android:layout_height="wrap_content"
     android:elevation="10dp"
     android:layout_margin="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/card_view"
+    app:cardCornerRadius="36dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/crd_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="48dp">
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="100dp"
@@ -20,41 +31,53 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:scaleType="fitXY"/>
 
+        </androidx.cardview.widget.CardView>
         <TextView
             android:id="@+id/text_collection_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/text_collection_name"
+            app:layout_constraintBottom_toTopOf="@+id/text_release_date"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="10dp"
             android:textSize="20sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/text"/>
 
         <TextView
             android:id="@+id/text_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/text_collection_name"
+            app:layout_constraintBottom_toTopOf="@+id/text_release_date"
             app:layout_constraintStart_toEndOf="@+id/text_collection_price"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/text"/>
 
         <TextView
             android:id="@+id/text_collection_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/crd_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="10dp"
             android:textSize="20sp"
-            android:textColor="@color/black"/>
+            android:textAlignment="center"
+            android:textColor="@color/text"/>
 
         <TextView
             android:id="@+id/text_release_date"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/text_collection_price"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="10dp"
             android:textSize="20sp"
-            android:textColor="@color/black"/>
+            android:textAlignment="center"
+            android:textColor="@color/text"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

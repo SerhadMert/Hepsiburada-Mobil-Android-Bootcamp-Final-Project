@@ -1,5 +1,6 @@
 package com.example.test.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -49,6 +50,7 @@ class MyAdapter :RecyclerView.Adapter<MyAdapter.HomeClassHolder>(){
 
     override fun getItemCount(): Int =list.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newList: List<DataResult>){
         list= ArrayList(newList)
         notifyDataSetChanged()

@@ -1,5 +1,6 @@
 package com.example.test.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -64,6 +65,7 @@ class FavoritesAdapter:RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder
 
     override fun getItemCount(): Int = list.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newList: List<Favorites>){
         list= ArrayList(newList)
         notifyDataSetChanged()
