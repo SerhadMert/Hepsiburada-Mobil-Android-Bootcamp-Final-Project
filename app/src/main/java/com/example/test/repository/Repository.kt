@@ -4,7 +4,6 @@ import com.example.test.data.local.FavoritesDao
 import com.example.test.data.models.Data
 import com.example.test.data.models.Favorites
 import com.example.test.data.remote.RetrofitInstance
-import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 class Repository(private val favoritesDao: FavoritesDao) {

@@ -2,10 +2,7 @@ package com.example.test.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.test.ItunesApplication
-import com.example.test.data.local.RoomDB
 import com.example.test.data.models.Favorites
 import com.example.test.repository.Repository
 import kotlinx.coroutines.Dispatchers
