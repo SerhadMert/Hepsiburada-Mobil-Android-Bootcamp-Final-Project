@@ -1,5 +1,6 @@
 package com.example.test.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Html
 import android.view.View
@@ -62,6 +63,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun initBinding() {
         binding.apply {
             Glide.with(imgArt100.context).load(img).into(imgArt100)

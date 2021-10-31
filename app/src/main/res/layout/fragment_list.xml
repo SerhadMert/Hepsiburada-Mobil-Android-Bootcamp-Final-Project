@@ -51,7 +51,6 @@
             android:layout_height="wrap_content"
             android:checked="true"
             app:chipBackgroundColor="@color/card_view"
-            android:textColor="@color/text"
             android:textAlignment="center"
             android:text="@string/movies"
             style="@style/Widget.MaterialComponents.Chip.Choice"/>
@@ -61,7 +60,6 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             app:chipBackgroundColor="@color/card_view"
-            android:textColor="@color/text"
             android:textAlignment="center"
             android:text="@string/music"
             style="@style/Widget.MaterialComponents.Chip.Choice"/>
@@ -71,7 +69,6 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             app:chipBackgroundColor="@color/card_view"
-            android:textColor="@color/text"
             android:textAlignment="center"
             android:text="@string/apps"
             style="@style/Widget.MaterialComponents.Chip.Choice"/>
@@ -81,7 +78,6 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             app:chipBackgroundColor="@color/card_view"
-            android:textColor="@color/text"
             android:textAlignment="center"
             android:text="@string/books"
             style="@style/Widget.MaterialComponents.Chip.Choice"/>

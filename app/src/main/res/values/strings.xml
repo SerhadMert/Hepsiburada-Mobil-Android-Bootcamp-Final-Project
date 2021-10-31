@@ -1,10 +1,6 @@
 <resources>
     <string name="app_name">Test</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="collection_name">Collection Name :</string>
-    <string name="kind">Kind :</string>
-    <string name="price">Price :</string>
-    <string name="date">Date :</string>
     <string name="movies">Movies</string>
     <string name="music">Music</string>
     <string name="apps">Apps</string>
@@ -12,4 +8,5 @@
     <string name="search">Search</string>
     <string name="favorites">Favorites</string>
     <string name="no_description">No description found</string>
+    <string name="you_don_t_have_any_favorites_yet">You don\'t have any favorites yet</string>
 </resources>

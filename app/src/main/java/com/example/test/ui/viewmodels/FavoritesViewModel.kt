@@ -2,11 +2,11 @@ package com.example.test.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.test.data.models.Favorites
 import com.example.test.repository.Repository
 
 class FavoritesViewModel(private val repository: Repository) : ViewModel() {
-    val readData = repository.readData()
-
+     fun getFavorites():List<Favorites> = repository.readData()
 }
 
 class FavoritesViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
